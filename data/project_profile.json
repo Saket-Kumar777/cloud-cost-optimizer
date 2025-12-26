@@ -1,0 +1,16 @@
+{
+    "name": "Fashion Retail E-commerce",
+    "budget_inr_per_month": 80000,
+    "description": "Launch an e-commerce store for fashion retail with high availability, secure payment processing, and auto-scaling during sales.",
+    "tech_stack": {
+        "frontend": "React",
+        "backend": "Python Django",
+        "database": "MySQL",
+        "other": "Redis for caching"
+    },
+    "non_functional_requirements": [
+        "high availability",
+        "secure payment processing",
+        "auto-scaling during sales"
+    ]
+}

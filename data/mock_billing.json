@@ -1,0 +1,162 @@
+[
+    {
+        "month": "2025-01",
+        "service": "EC2",
+        "resource_id": "i-0123456789abcdef0",
+        "usage_type": "On-Demand Instance Hours",
+        "usage_quantity": 240,
+        "unit": "hours",
+        "cost_inr": 15000,
+        "desc": "EC2 instance running for 240 hours"
+    },
+    {
+        "month": "2025-01",
+        "service": "RDS",
+        "resource_id": "rds-instance-123456789",
+        "usage_type": "Database Hours",
+        "usage_quantity": 720,
+        "unit": "hours",
+        "cost_inr": 12000,
+        "desc": "RDS instance running for 720 hours"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudStorage",
+        "resource_id": "bucket-123456789",
+        "usage_type": "Storage GB",
+        "usage_quantity": 100,
+        "unit": "GB",
+        "cost_inr": 2000,
+        "desc": "Cloud storage used for 100 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudStorage",
+        "resource_id": "bucket-123456789",
+        "usage_type": "Data Transfer Out GB",
+        "usage_quantity": 50,
+        "unit": "GB",
+        "cost_inr": 1000,
+        "desc": "Data transfer out of 50 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "Redis",
+        "resource_id": "redis-instance-123456789",
+        "usage_type": "Instance Hours",
+        "usage_quantity": 160,
+        "unit": "hours",
+        "cost_inr": 8000,
+        "desc": "Redis instance running for 160 hours"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudFront",
+        "resource_id": "distribution-123456789",
+        "usage_type": "Requests",
+        "usage_quantity": 1000000,
+        "unit": "requests",
+        "cost_inr": 5000,
+        "desc": "CloudFront requests for 1 million"
+    },
+    {
+        "month": "2025-01",
+        "service": "API Gateway",
+        "resource_id": "api-gateway-123456789",
+        "usage_type": "Requests",
+        "usage_quantity": 500000,
+        "unit": "requests",
+        "cost_inr": 3000,
+        "desc": "API Gateway requests for 500 thousand"
+    },
+    {
+        "month": "2025-01",
+        "service": "S3",
+        "resource_id": "bucket-123456789",
+        "usage_type": "Data Transfer In GB",
+        "usage_quantity": 20,
+        "unit": "GB",
+        "cost_inr": 500,
+        "desc": "Data transfer in of 20 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "S3",
+        "resource_id": "bucket-123456789",
+        "usage_type": "Data Transfer Out GB",
+        "usage_quantity": 30,
+        "unit": "GB",
+        "cost_inr": 750,
+        "desc": "Data transfer out of 30 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudWatch",
+        "resource_id": "cloudwatch-123456789",
+        "usage_type": "Data Points",
+        "usage_quantity": 1000000,
+        "unit": "data points",
+        "cost_inr": 2000,
+        "desc": "CloudWatch data points for 1 million"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudWatch",
+        "resource_id": "cloudwatch-123456789",
+        "usage_type": "Log Group Storage GB",
+        "usage_quantity": 5,
+        "unit": "GB",
+        "cost_inr": 1000,
+        "desc": "CloudWatch log group storage for 5 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudWatch",
+        "resource_id": "cloudwatch-123456789",
+        "usage_type": "Log Delivery Hours",
+        "usage_quantity": 240,
+        "unit": "hours",
+        "cost_inr": 1500,
+        "desc": "CloudWatch log delivery for 240 hours"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudTrail",
+        "resource_id": "cloudtrail-123456789",
+        "usage_type": "Data Points",
+        "usage_quantity": 500000,
+        "unit": "data points",
+        "cost_inr": 1000,
+        "desc": "CloudTrail data points for 500 thousand"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudTrail",
+        "resource_id": "cloudtrail-123456789",
+        "usage_type": "Storage GB",
+        "usage_quantity": 2,
+        "unit": "GB",
+        "cost_inr": 500,
+        "desc": "CloudTrail storage for 2 GB"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudFormation",
+        "resource_id": "cloudformation-123456789",
+        "usage_type": "Stack Hours",
+        "usage_quantity": 80,
+        "unit": "hours",
+        "cost_inr": 4000,
+        "desc": "CloudFormation stack hours for 80 hours"
+    },
+    {
+        "month": "2025-01",
+        "service": "CloudFormation",
+        "resource_id": "cloudformation-123456789",
+        "usage_type": "Template Views",
+        "usage_quantity": 1000,
+        "unit": "views",
+        "cost_inr": 1000,
+        "desc": "CloudFormation template views for 1000"
+    }
+]

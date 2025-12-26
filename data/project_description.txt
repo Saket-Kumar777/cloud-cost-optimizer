@@ -1,0 +1,1 @@
+We are launching an e-commerce store for fashion retail with 50,000 monthly visitors. Budget: 80000 INR per month. Tech stack: React frontend, Python Django backend, MySQL database, Redis for caching. Non-functional requirements: high availability, secure payment processing, auto-scaling during sales.
