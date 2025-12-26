@@ -1,5 +1,3 @@
-<!-- AI-Powered Cloud Cost Optimizer (LLM-Driven) -->
-
 # AI-Powered Cloud Cost Optimizer (LLM-Driven)
 
 This Python CLI toolkit simulates cloud billing, extracts structured project profiles from plain-English descriptions, and produces actionable cost-optimization recommendations using an LLM-assisted pipeline. It's designed to be deterministic where it matters (parsing, validation, report format) and to leverage LLMs for profile extraction and realistic billing synthesis.
@@ -49,124 +47,97 @@ HF_MODEL=meta-llama/Llama-3.1-8B-Instruct
 python main.py
 ```
 
-By default `main.py` will read `data/project_description.txt` (if present) or prompt for a description, then produce `data/project_profile.json`, `data/mock_billing.json`, and `data/cost_optimization_report.json`.
+The tool launches an interactive CLI menu with four options:
+1. **Enter New Project Description** — Input a plain-English project description (e.g., tech stack, budget, requirements).
+2. **Run Full Cost Analysis** — Generate profile → billing → recommendations automatically.
+3. **View Recommendations** — Display the optimization report and top savings opportunities.
+4. **Exit** — Close the tool.
+
+**Note on Special Characters**: Use UTF-8 encoding when entering descriptions with currency symbols (₹, €, etc.). The tool will save results to `data/project_profile.json`, `data/mock_billing.json`, and `data/cost_optimization_report.json`.
 
 ---
 
-## Example Walkthrough
+## Interactive CLI Walkthrough
 
-The following example demonstrates the input → profile → billing → recommendations flow.
+The following example demonstrates the full interactive menu-driven flow.
 
-### Step 1: User Input
+### Step 1: Launch & Select Option 1
 
-Example input provided to the CLI or `data/project_description.txt`:
+```
+==================================================
+   AI-POWERED CLOUD COST OPTIMIZER
+==================================================
+
+1. Enter New Project Description
+2. Run Full Cost Analysis (Profile -> Billing -> Report)
+3. View Recommendations
+4. Exit
+
+Select an option (1-4): 1
+```
+
+**Enter your project description:**
 
 > "We are building a food delivery app for 10,000 users per month. Budget: ₹50,000 per month. Tech stack: Node.js backend, PostgreSQL database, object storage for images, monitoring, and basic analytics. Non-functional requirements: scalability, cost efficiency, uptime monitoring."
+
+**Output:**
+```
+Generating project profile...
+⏳ Asking AI (meta-llama/Llama-3.1-8B-Instruct)...
+Saved: project_profile.json
+
+Profile created successfully!
+```
 
 ---
 
 ### Step 2: Generated Profile (`data/project_profile.json`)
 
-The LLM-backed extractor normalizes the description into structured JSON, for example:
+The LLM-backed extractor normalizes the description into structured JSON. The generated profile is then saved and the menu returns for the next step.
 
-```json
-{
-  "name": "Food Delivery App",
-  "budget_inr_per_month": 50000,
-  "description": "We are building a food delivery app for 10,000 users per month",
-  "tech_stack": {
-    "backend": "Node.js",
-    "database": "PostgreSQL",
-    "storage": "object storage",
-    "monitoring": "CloudWatch/Cloud-native",
-    "analytics": "basic analytics"
-  },
-  "non_functional_requirements": [
-    "Uptime Monitoring",
-    "Scalability",
-    "Cost Efficiency"
-  ]
-}
+### Step 3: Run Full Analysis (Option 2)
+
+Select **Option 2** from the menu to run the complete pipeline:
+
+```
+Starting Full Analysis Pipeline...
+Step 2: Generating Synthetic Billing Data...
+Generating mock billing data...
+⏳ Asking AI (meta-llama/Llama-3.1-8B-Instruct)...
+Saved: mock_billing.json
+
+Step 3: Analyzing Costs & Recommendations...
+Analyzing costs and generating recommendations...
+⏳ Asking AI (meta-llama/Llama-3.1-8B-Instruct)...
+Saved: cost_optimization_report.json
+
+Analysis Complete! Check 'data/cost_optimization_report.json'
 ```
 
----
+The `mock_billing.json` contains 12–20 realistic line items tailored to the tech stack and budget. The `cost_optimization_report.json` contains the full analysis with cost breakdowns and actionable recommendations.
 
-### Step 3: Mock Billing Data (`data/mock_billing.json`)
+### Step 4: View Recommendations (Option 3)
 
-The billing simulator produces 12–20 line items matching the profile and budget. Example snippet:
+Select **Option 3** to display the final optimization report:
 
-```json
-[
-  {
-    "month": "2025-09",
-    "service": "RDS",
-    "resource_id": "db-prod-replica-01",
-    "region": "ap-south-1",
-    "usage_type": "PostgreSQL (provisioned)",
-    "usage_quantity": 720,
-    "unit": "hours",
-    "cost_inr": 38497,
-    "desc": "Production database replica"
-  },
-  {
-    "month": "2025-09",
-    "service": "S3",
-    "resource_id": "bucket-food-delivery-prod",
-    "region": "ap-south-1",
-    "usage_type": "Standard Storage",
-    "usage_quantity": 100,
-    "unit": "GB",
-    "cost_inr": 1069,
-    "desc": "Production bucket for food delivery app"
-  }
-]
+```
+--- OPTIMIZATION REPORT ---
+Project: Food Delivery App
+Total Cost: 16500
+Budget: 50000
+
+Top Recommendations:
+1. Use Spot Instances for EC2 (Save 500)
+2. Switch to Open Source Database (Save 500)
+3. Optimize CloudStorage Usage (Save 1000)
+4. Use CloudWatch Free Tier (Save 1000)
+5. Use Route 53 Alias Records (Save 200)
+6. Use API Gateway REST API (Save 1000)
+7. Use Lambda Function Concurrency (Save 500)
+8. Use S3 Transfer Acceleration (Save 200)
 ```
 
-All items are validated for numeric types and totals before the analyzer runs.
-
----
-
-### Step 4: Optimization Report (`data/cost_optimization_report.json`)
-
-The analyzer summarizes costs and returns 6–10 prioritized recommendations. Example:
-
-```json
-{
-  "project_name": "Food Delivery App",
-  "analysis": {
-    "total_monthly_cost": 49902.25,
-    "budget": 50000,
-    "budget_variance": -97.75,
-    "service_costs": {
-      "RDS": 41339.0,
-      "S3": 1502.0,
-      "CloudWatch": 3448.5,
-      "EC2": 1382.75,
-      "EBS": 2230.0
-    },
-    "high_cost_services": ["RDS", "CloudWatch", "EBS"],
-    "is_over_budget": false
-  },
-  "recommendations": [
-    {
-      "title": "Migrate to PostgreSQL Free Tier",
-      "service": "RDS",
-      "current_cost": 41339,
-      "potential_savings": 8226,
-      "recommendation_type": "free_tier",
-      "description": "Migrate development and staging databases to free-tier offerings where feasible.",
-      "implementation_effort": "medium",
-      "risk_level": "medium",
-      "steps": [
-        "Assess RDS usage and identify non-production instances",
-        "Export and import schema into free-tier-compatible instances",
-        "Reconfigure backups and monitoring for free tier"
-      ],
-      "cloud_providers": ["AWS", "Azure", "GCP"]
-    }
-  ]
-}
-```
+Each recommendation includes the service, savings amount, and quick implementation insight. The full detailed report is available in `data/cost_optimization_report.json` for further analysis.
 
 ---
 

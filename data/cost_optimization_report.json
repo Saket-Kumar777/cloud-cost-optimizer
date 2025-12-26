@@ -1,31 +1,30 @@
 {
-    "project_name": "Fashion Retail E-commerce",
+    "project_name": "Food Delivery App",
     "analysis": {
-        "total_monthly_cost": 58250,
-        "budget": 80000,
-        "budget_variance": -21750,
+        "total_monthly_cost": 16500,
+        "budget": 50000,
+        "budget_variance": -33500,
         "is_over_budget": false,
         "service_costs": {
-            "EC2": 15000,
-            "RDS": 12000,
-            "CloudStorage": 4000,
-            "Redis": 8000,
-            "CloudFront": 5000,
+            "EC2": 1500,
+            "RDS": 750,
+            "CloudStorage": 2700,
+            "CloudWatch": 1500,
+            "Route 53": 500,
             "API Gateway": 3000,
-            "S3": 1250,
-            "CloudWatch": 5000,
-            "CloudTrail": 1500,
-            "CloudFormation": 6000
+            "Lambda": 2000,
+            "S3": 750,
+            "CloudFront": 4000
         }
     },
     "recommendations": [
         {
-            "title": "Migrate to Spot Instances for EC2",
+            "title": "Use Spot Instances for EC2",
             "service": "EC2",
-            "current_cost": 15000,
-            "potential_savings": 3000,
+            "current_cost": 1500,
+            "potential_savings": 500,
             "recommendation_type": "right_sizing",
-            "description": "Consider migrating to Spot Instances for EC2 to save up to 20% on instance costs.",
+            "description": "Use Spot Instances for EC2 to save up to 33% on instance costs.",
             "cloud_providers": [
                 "AWS",
                 "Azure",
@@ -33,50 +32,12 @@
             ]
         },
         {
-            "title": "Use Open Source Alternatives for Redis",
-            "service": "Redis",
-            "current_cost": 8000,
-            "potential_savings": 4000,
-            "recommendation_type": "open_source_alternative",
-            "description": "Consider using open source alternatives like Redis Labs or Redis Cluster to save up to 50% on Redis costs.",
-            "cloud_providers": [
-                "AWS",
-                "Azure",
-                "GCP"
-            ]
-        },
-        {
-            "title": "Optimize CloudFront Configuration",
-            "service": "CloudFront",
-            "current_cost": 5000,
-            "potential_savings": 1000,
-            "recommendation_type": "configuration_optimization",
-            "description": "Consider optimizing CloudFront configuration to reduce the number of requests and save up to 20% on CloudFront costs.",
-            "cloud_providers": [
-                "AWS",
-                "Azure",
-                "GCP"
-            ]
-        },
-        {
-            "title": "Use Azure Blob Storage for CloudStorage",
-            "service": "CloudStorage",
-            "current_cost": 4000,
-            "potential_savings": 2000,
-            "recommendation_type": "multi_cloud_alternative",
-            "description": "Consider using Azure Blob Storage for CloudStorage to save up to 50% on storage costs.",
-            "cloud_providers": [
-                "Azure",
-                "GCP"
-            ]
-        },
-        {
-            "title": "Right-Size RDS Instance",
+            "title": "Switch to Open Source Database",
             "service": "RDS",
-            "current_cost": 12000,
-            "potential_savings": 2000,
-            "recommendation_type": "right_sizing",
-            "description": "Consider right-sizing the RDS instance to reduce costs by up to 17%.",
+            "current_cost": 750,
+            "potential_savings": 500,
+            "recommendation_type": "open_source_alternative",
+            "description": "Consider switching to an open-source database like PostgreSQL or MySQL to save on database costs.",
             "cloud_providers": [
                 "AWS",
                 "Azure",
@@ -84,24 +45,12 @@
             ]
         },
         {
-            "title": "Use GCP Cloud Storage for CloudStorage",
+            "title": "Optimize CloudStorage Usage",
             "service": "CloudStorage",
-            "current_cost": 4000,
-            "potential_savings": 2000,
-            "recommendation_type": "multi_cloud_alternative",
-            "description": "Consider using GCP Cloud Storage for CloudStorage to save up to 50% on storage costs.",
-            "cloud_providers": [
-                "GCP",
-                "Azure"
-            ]
-        },
-        {
-            "title": "Optimize CloudWatch Configuration",
-            "service": "CloudWatch",
-            "current_cost": 5000,
+            "current_cost": 2700,
             "potential_savings": 1000,
-            "recommendation_type": "configuration_optimization",
-            "description": "Consider optimizing CloudWatch configuration to reduce the number of data points and save up to 20% on CloudWatch costs.",
+            "recommendation_type": "right_sizing",
+            "description": "Optimize CloudStorage usage by deleting unused data and using lifecycle policies to reduce storage costs.",
             "cloud_providers": [
                 "AWS",
                 "Azure",
@@ -109,13 +58,66 @@
             ]
         },
         {
-            "title": "Use Azure API Management for API Gateway",
+            "title": "Use CloudWatch Free Tier",
+            "service": "CloudWatch",
+            "current_cost": 1500,
+            "potential_savings": 1000,
+            "recommendation_type": "right_sizing",
+            "description": "Use the CloudWatch free tier to reduce costs on metrics and logs.",
+            "cloud_providers": [
+                "AWS",
+                "Azure",
+                "GCP"
+            ]
+        },
+        {
+            "title": "Use Route 53 Alias Records",
+            "service": "Route 53",
+            "current_cost": 500,
+            "potential_savings": 200,
+            "recommendation_type": "right_sizing",
+            "description": "Use Route 53 alias records to reduce costs on DNS queries.",
+            "cloud_providers": [
+                "AWS",
+                "Azure",
+                "GCP"
+            ]
+        },
+        {
+            "title": "Use API Gateway REST API",
             "service": "API Gateway",
             "current_cost": 3000,
             "potential_savings": 1000,
-            "recommendation_type": "multi_cloud_alternative",
-            "description": "Consider using Azure API Management for API Gateway to save up to 33% on API Gateway costs.",
+            "recommendation_type": "right_sizing",
+            "description": "Use API Gateway REST API to reduce costs on API requests.",
             "cloud_providers": [
+                "AWS",
+                "Azure",
+                "GCP"
+            ]
+        },
+        {
+            "title": "Use Lambda Function Concurrency",
+            "service": "Lambda",
+            "current_cost": 2000,
+            "potential_savings": 500,
+            "recommendation_type": "right_sizing",
+            "description": "Use Lambda function concurrency to reduce costs on function invocations.",
+            "cloud_providers": [
+                "AWS",
+                "Azure",
+                "GCP"
+            ]
+        },
+        {
+            "title": "Use S3 Transfer Acceleration",
+            "service": "S3",
+            "current_cost": 750,
+            "potential_savings": 200,
+            "recommendation_type": "right_sizing",
+            "description": "Use S3 transfer acceleration to reduce costs on data transfer out.",
+            "cloud_providers": [
+                "AWS",
                 "Azure",
                 "GCP"
             ]
